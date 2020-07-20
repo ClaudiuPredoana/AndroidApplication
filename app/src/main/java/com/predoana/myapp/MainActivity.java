@@ -2,7 +2,11 @@ package com.predoana.myapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,35 +14,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("myapp","onCreate");
-    }
 
-    @Override
-    protected void onStart(){
-        super.onStart();
-        Log.d("myapp","onStart");
-    }
+        TextView textView = findViewById(R.id.textView);
+        final EditText editText = findViewById(R.id.editText);
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-        Log.d("myapp","onResume");
-    }
+        Button button = findViewById(R.id.buttonTalk);
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("myapp", "onPause");
-    }
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("myapp", "onStop");
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("myapp", "onDestroy");
+                String currentText = editText.getText().toString();
+                Toast.makeText(MainActivity.this, currentText , Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
+
